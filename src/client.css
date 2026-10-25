@@ -1,0 +1,88 @@
+.dsh-se-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  min-width: 0;
+}
+
+.dsh-se-row-actions,
+.dsh-se-editor-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.dsh-se-row-actions {
+  color: var(--dsw-alias-label-tertiary);
+  font-size: 12px;
+}
+
+.dsh-se-row-actions time { margin-right: 6px; }
+
+.dsh-se-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--dsw-radius-sm);
+  background: transparent;
+  color: var(--dsw-alias-label-tertiary);
+  cursor: pointer;
+}
+
+.dsh-se-action:hover:not(:disabled) {
+  background: var(--dsw-alias-interactive-bg-hover);
+  color: var(--dsw-alias-label-secondary);
+}
+
+.dsh-se-action:disabled,
+.dsh-se-action[aria-disabled='true'] { opacity: .4; cursor: default; }
+
+.dsh-se-row > .dsh-se-row-actions { opacity: 0; }
+.dsh-se-row:hover > .dsh-se-row-actions,
+.dsh-se-row:focus-within > .dsh-se-row-actions { opacity: 1; }
+
+.dsh-se-editor { width: 100%; min-width: 0; }
+.dsh-se-editor-field { display: flex; border: 0; padding: 0; margin: 0; min-width: 0; }
+.dsh-se-editor-input {
+  width: 100%;
+  min-height: 72px;
+  max-height: 320px;
+  padding: 10px 12px;
+  font-family: var(--dsw-font-family);
+  font-size: var(--dsh-content-font-size, 14px);
+  line-height: calc(24px + var(--dsh-content-font-delta, 0px));
+}
+.dsh-se-editor-actions { gap: 8px; margin-top: 8px; }
+
+.dsh-se-error { color: var(--dsw-alias-state-error-primary); margin: 0 0 8px; font-size: 13px; }
+.dsh-se-muted { color: var(--dsw-alias-label-secondary); margin: 0; font-size: 13px; }
+
+[data-session-edit-suppressed] { display: none !important; }
+.dsh-se-primary-seat { display: inline-flex; flex: none; }
+/* Used only if a host replaces the InputBar and no native primary can be found. */
+.dsh-se-primary {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--dsw-alias-button-info-fill);
+  color: var(--dsw-alias-label-primary-foreground);
+  cursor: pointer;
+}
+.dsh-se-primary:disabled { opacity: .4; cursor: default; }
+
+@media (hover: none), (max-width: 720px) {
+  .dsh-se-row > .dsh-se-row-actions { opacity: 1; }
+}
+@media (pointer: coarse) {
+  .dsh-se-action { min-width: 36px; min-height: 36px; }
+}
